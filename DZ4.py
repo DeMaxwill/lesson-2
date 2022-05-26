@@ -1,9 +1,9 @@
 
 a = int (input ('Ввести а: '))
-i = 50
+n = 50
 
 
-if a<i:
+if a<n:
     print ('Выполняется')
 else:
      print ('Не выполняется')
