@@ -1,11 +1,7 @@
 
-n= 10
-k= 9
+n= int (input ('Введите число n: '))
+k= int (input ('Введите число k: '))
+
+print(n//k and n%k)
 
 
-print(n//k)
-
-n= 10
-k= 3
-
-print (n%k)
