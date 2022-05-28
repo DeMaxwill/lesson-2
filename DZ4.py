@@ -1,9 +1,9 @@
 
-a = int (input ('Ввести а: '))
-n = 50
-
-
-if a<n:
+Res = int (input('Введите число: '))
+for i in range(5):
+       Res *= 2
+       print (Res)
+if Res < 50:
     print ('Выполняется')
-else:
-     print ('Не выполняется')
+elif Res > 50:
+        print ('Не выполняется')
