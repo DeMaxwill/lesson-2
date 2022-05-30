@@ -1,9 +1,12 @@
+n = int(input('Input natural number: '))
 
-Res = int (input('Введите число: '))
-for i in range(5):
-       Res *= 2
-       print (Res)
-if Res < 50:
-    print ('Выполняется')
-elif Res > 50:
-        print ('Не выполняется')
+for num in range(1, n + 1):
+
+    res = 1
+
+    for i in range(1, num + 1):
+        res *= 2
+
+    if res > n:
+        print(num - 1, int(res / 2))
+        break
