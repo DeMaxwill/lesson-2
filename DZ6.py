@@ -9,7 +9,7 @@ while True:
 
     counter += 1
 
-    ask = int(input('Try only integers: '))
+    ask = int(input('Ввести целое число: '))
 
     sum_attempts += ask
 
