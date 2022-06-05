@@ -18,4 +18,5 @@ def arithmetic(a, b, c):
         return a / b
     else:
         print("Неизвестная операция ")
+
 arithmetic(a, b, c)
