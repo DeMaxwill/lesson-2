@@ -1,22 +1,15 @@
-a_dict = '2', '4', '6', '8'
-b_dict = '3', '5', '7', '9'
-c_dict = '+', '-', '*', '/'
+def arithmetic(arg1, arg2, operations):
 
-a=a_dict
-b=b_dict
-c=c_dict
+    operators = {"+": lambda num1, num2: num1 + num2,
+                 "-": lambda num1, num2: num1 - num2,
+                 "*": lambda num1, num2: num1 * num2,
+                 "/": lambda num1, num2: num1 / num2,
+                 }
 
-
-def arithmetic(a, b, c):
-    if c == "+":
-        return a + b
-    elif c == "-":
-        return a - b
-    elif c == "*":
-        return a * b
-    elif c == "/":
-        return a / b
+    if operations not in operators:
+        return "!Неизвестная Операция!"
     else:
-        print("Неизвестная операция ")
+        return operators.get(operations)(arg1, arg2)
 
-arithmetic(a, b, c)
+result = arithmetic(7, 8, "&")
+print(result)
