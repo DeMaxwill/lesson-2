@@ -1,6 +1,8 @@
-logs = {"Max": "indahouse"}
+login = "Max"
+password = "indahouse"
 
-def decorator (func):
+
+def decorator(func):
     def wrapper(name, pwd):
         if check_password(name, pwd):
             return func(name, pwd)
@@ -9,13 +11,14 @@ def decorator (func):
 
     return wrapper
 
+
 @decorator
-def login(name: str, pwd: str) ->bool:
-    return True
+def check_login(name: str, pwd: str) -> bool:
+    return password.get(name) == name
 
 
 def check_password(name: str, pwd: str) -> bool:
-    return logs.get(name)==pwd
+    return password.get(pwd) == pwd
 
 
 if __name__ == '__main__':
@@ -25,16 +28,18 @@ if __name__ == '__main__':
 
         print(f"У вас осталось {counter} попыток!")
 
-        username = input("Логин: ")
-        password = input("Пароль: ")
+        a = input("Логин: ")
+        b = input("Пароль: ")
 
-        log = login(username, password)
-
-        if log is True:
-            print("Вы в системе!")
-            break
-        else:
-            print("Неправильный Логин или Пароль!")
+        if a == login and b != password:
+            print("Неправильный Пароль!")
             counter -= 1
-    else:
-        print("Попыток больше нет.. Прощайте")
+        elif a != login and b == password:
+            print("Неправильный Логин!")
+            counter -= 1
+        elif a != login and b != password:
+            print("Неправильный Логин и Пароль!!")
+            counter -= 1
+        else:
+            print("Вы в системе =)")
+            break
