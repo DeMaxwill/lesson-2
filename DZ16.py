@@ -1,3 +1,6 @@
+import argparse
+import getpass
+
 login = "Max"
 password = "indahouse"
 
@@ -22,24 +25,42 @@ def check_password(name: str, pwd: str) -> bool:
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='This is a program that lists the servers in EC2')
+    parser.add_argument(
+        "-u",
+        "--user",
+        default=getpass.getuser(),
+        help="Specify the username to log into Confluence")
 
-    counter = 3
-    while counter >= 1:
+    parser.add_argument(
+        "-d",
+        "--password",
+        help="Specify the user's password")
 
-        print(f"У вас осталось {counter} попыток!")
+    options = parser.parse_args()
+    if options.password and options.user is True:
+        user = options.user
+        password = options.password
+        auth = {user: password}
+    else:
 
-        a = input("Логин: ")
-        b = input("Пароль: ")
+        c = 3
+    while c >= 1:
+
+        print(f"У вас осталось {c} попыток!")
+
+        a = login
+        b = password
 
         if a == login and b != password:
             print("Неправильный Пароль!")
-            counter -= 1
+            c -= 1
         elif a != login and b == password:
             print("Неправильный Логин!")
-            counter -= 1
+            c -= 1
         elif a != login and b != password:
             print("Неправильный Логин и Пароль!!")
-            counter -= 1
+            c -= 1
         else:
             print("Вы в системе =)")
             break
