@@ -1,7 +1,7 @@
 import argparse
 import getpass
 
-login = "Max"
+user = "Max"
 password = "indahouse"
 
 
@@ -24,43 +24,40 @@ def check_password(name: str, pwd: str) -> bool:
     return password.get(pwd) == pwd
 
 
-if __name__ == '__main__':
+def parse():
     parser = argparse.ArgumentParser(description='Форма входа в систему')
     parser.add_argument(
         "-u",
         "--user",
+        type=str,
         default=getpass.getuser(),
         help="Нужно ввести ваш логин, чтобы зайти в систему")
 
     parser.add_argument(
         "-d",
         "--password",
+        type=str,
         help="Нужно ввести ваш пародь, чтобы зайти в систему")
+    return parser.parse_args()
 
-    options = parser.parse_args()
-    if options.password and options.user is True:
-        user = options.user
-        password = options.password
-        auth = {user: password}
-    else:
 
-        c = 3
-    while c >= 1:
+if __name__ == '__main__':
 
-        print(f"У вас осталось {c} попыток!")
+    if parse().user or input("Логин: ") and parse().password or input("Пароль: ") is True:
+        print("Вы в системе =)")
+    elif parse().user and parse().password is False:
+        a = user or input("Логин: ")
+        b = password or input("Пароль: ")
+        c = counter = 3
 
-        a = login
-        b = password
-
-        if a == login and b != password:
+        if a == user and b != password:
             print("Неправильный Пароль!")
-            c -= 1
-        elif a != login and b == password:
+            counter -= 1
+        elif a != user and b == password:
             print("Неправильный Логин!")
-            c -= 1
-        elif a != login and b != password:
+            counter -= 1
+        elif a != user and b != password:
             print("Неправильный Логин и Пароль!!")
-            c -= 1
+            counter -= 1
         else:
             print("Вы в системе =)")
-            break
