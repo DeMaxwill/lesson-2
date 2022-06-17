@@ -25,17 +25,17 @@ def check_password(name: str, pwd: str) -> bool:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='This is a program that lists the servers in EC2')
+    parser = argparse.ArgumentParser(description='Форма входа в систему')
     parser.add_argument(
         "-u",
         "--user",
         default=getpass.getuser(),
-        help="Specify the username to log into Confluence")
+        help="Нужно ввести ваш логин, чтобы зайти в систему")
 
     parser.add_argument(
         "-d",
         "--password",
-        help="Specify the user's password")
+        help="Нужно ввести ваш пародь, чтобы зайти в систему")
 
     options = parser.parse_args()
     if options.password and options.user is True:
