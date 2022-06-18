@@ -1,8 +1,7 @@
 import argparse
-import getpass
 
-user = "Max"
-password = "indahouse"
+user = ["Max"]
+password = ["indahouse"]
 
 
 def decorator(func):
@@ -30,7 +29,6 @@ def parse():
         "-u",
         "--user",
         type=str,
-        default=getpass.getuser(),
         help="Нужно ввести ваш логин, чтобы зайти в систему")
 
     parser.add_argument(
@@ -38,26 +36,22 @@ def parse():
         "--password",
         type=str,
         help="Нужно ввести ваш пародь, чтобы зайти в систему")
-    return parser.parse_args()
+    return parse
 
 
 if __name__ == '__main__':
-
-    if parse().user or input("Логин: ") and parse().password or input("Пароль: ") is True:
-        print("Вы в системе =)")
-    elif parse().user and parse().password is False:
-        a = user or input("Логин: ")
-        b = password or input("Пароль: ")
-        c = counter = 3
-
-        if a == user and b != password:
-            print("Неправильный Пароль!")
-            counter -= 1
-        elif a != user and b == password:
-            print("Неправильный Логин!")
-            counter -= 1
-        elif a != user and b != password:
-            print("Неправильный Логин и Пароль!!")
-            counter -= 1
-        else:
-            print("Вы в системе =)")
+    a = 1
+    while a <= 3:
+        print('Введите логин:')
+        l = parse().user = input()
+        print('Введите пароль:')
+        p = parse().pasword = input()
+        if l not in user or p not in password or user.index(l) != password.index(p):
+            if a <= 2:
+                print('Неправильно. Попробуйте еще раз.')
+            a += 1
+        elif user.index(l) == password.index(p):
+            print('Вы вошли.')
+            break
+        if a > 3:
+            print('Вы исчерпали свои попытки.')
