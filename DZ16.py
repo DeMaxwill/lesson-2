@@ -1,5 +1,4 @@
 import argparse
-import time
 
 log = 'Max'
 pas = 'indahouse'
@@ -52,7 +51,6 @@ if __name__ == '__main__':
             break
         elif i == 2 and sum != 2:
             print('3 раза неверно имя пользователя или пароль! Вы сможете попробовать еще через 5 секунд. ')
-            time.sleep(5)
             break
         else:
             continue
