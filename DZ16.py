@@ -29,8 +29,8 @@ def parse():
 if __name__ == '__main__':
 
     for i in range(3):
-        name = parse().name = input("Логин: ")
-        password = parse().password = input('Пароль: ')
+        name = parse().name or input("Логин: ")
+        password = parse().password or input('Пароль: ')
         num_name = 0
         num_pw = 0
         if name == 'Max':
