@@ -1,7 +1,7 @@
 import argparse
 
-user = ["Max"]
-password = ["indahouse"]
+log = 'Max'
+pas = 'indahouse'
 
 
 def decorator(func):
@@ -15,43 +15,38 @@ def decorator(func):
 
 
 @decorator
-def check_login(name: str, pwd: str) -> bool:
-    return password.get(name) == name
-
-
 def check_password(name: str, pwd: str) -> bool:
-    return password.get(pwd) == pwd
+    return check_password.get(name) == pwd
 
 
 def parse():
-    parser = argparse.ArgumentParser(description='Форма входа в систему')
-    parser.add_argument(
-        "-u",
-        "--user",
-        type=str,
-        help="Нужно ввести ваш логин, чтобы зайти в систему")
-
-    parser.add_argument(
-        "-d",
-        "--password",
-        type=str,
-        help="Нужно ввести ваш пародь, чтобы зайти в систему")
-    return parse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u', '--user', type=str, help='username')
+    parser.add_argument('-p', '--password', type=str, help='password')
+    return parser.parse_args()
 
 
 if __name__ == '__main__':
-    a = 1
-    while a <= 3:
-        print('Введите логин:')
-        l = parse().user = input()
-        print('Введите пароль:')
-        p = parse().pasword = input()
-        if l not in user or p not in password or user.index(l) != password.index(p):
-            if a <= 2:
-                print('Неправильно. Попробуйте еще раз.')
-            a += 1
-        elif user.index(l) == password.index(p):
-            print('Вы вошли.')
+
+    for i in range(3):
+        name = parse().name = input("Логин: ")
+        password = parse().password = input('Пароль: ')
+        num_name = 0
+        num_pw = 0
+        if name == 'Max':
+            num_name = 1
+        else:
+            num = name = 0
+        if password == 'indahouse':
+            num_pw = 1
+        else:
+            num_pw = 0
+        sum = num_name + num_pw
+        if sum == 2:
+            print('Вошли успешно! ')
             break
-        if a > 3:
-            print('Вы исчерпали свои попытки.')
+        elif i == 2 and sum != 2:
+            print('3 раза неверно имя пользователя или пароль! Выйти из программы. ')
+            break
+        else:
+            continue
