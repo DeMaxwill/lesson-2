@@ -38,6 +38,7 @@ if __name__ == '__main__':
         num_pwd = 0
         login(name, password)
         check_password(name, password)
+
         if name == 'Max':
             num_name = 1
         else:
