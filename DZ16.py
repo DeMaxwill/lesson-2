@@ -15,7 +15,7 @@ def decorator(func):
 
 
 @decorator
-def check_login (name: str, pwd: str,) -> bool:
+def check_login(name: str, pwd: str,) -> bool:
     return check_login.get(pwd) == name
 
 
