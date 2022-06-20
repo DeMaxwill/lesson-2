@@ -1,7 +1,6 @@
 import argparse
 
-log = 'Max'
-pas = 'indahouse'
+logs = {"Max": "indahouse"}
 
 
 def decorator(func):
@@ -15,12 +14,12 @@ def decorator(func):
 
 
 @decorator
-def check_login(name: str, pwd: str,) -> bool:
-    return check_login.get(pwd) == name
+def login(name: str, pwd: str,) -> bool:
+    return logs.get(pwd) == name
 
 
 def check_password(name: str, pwd: str) -> bool:
-    return check_password.get(name) == pwd
+    return logs.get(name) == pwd
 
 
 def parse():
@@ -36,21 +35,23 @@ if __name__ == '__main__':
         name = parse().user or input("Логин: ")
         password = parse().password or input('Пароль: ')
         num_name = 0
-        num_pw = 0
+        num_pwd = 0
+        login(name, password)
+        check_password(name, password)
         if name == 'Max':
             num_name = 1
         else:
             num = name = 0
         if password == 'indahouse':
-            num_pw = 1
+            num_pwd = 1
         else:
-            num_pw = 0
-        sum = num_name + num_pw
+            num_pwd = 0
+        sum = num_name + num_pwd
         if sum == 2:
             print('Вошли успешно! ')
             break
         elif i == 2 and sum != 2:
-            print('3 раза неверно имя пользователя или пароль! Вы сможете попробовать еще через 5 секунд. ')
+            print('3 раза неверно имя пользователя или пароль! Выход из системы!')
             break
         else:
             continue
