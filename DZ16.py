@@ -6,7 +6,7 @@ logs = {"Max": "indahouse"}
 
 
 def decorator(func):
-    def wrapper(name, pwd):
+    def wrapper(name: str, pwd: str) -> bool:
         if check_password(name, pwd):
             return func(name, pwd)
         else:
@@ -41,10 +41,7 @@ if __name__ == '__main__':
         username = parse().user or input("Логин: ")
         password = parse().password or input("Пароль: ")
 
-        log = login(username, password)
-        pas = check_password(username, password)
-
-        if log and pas is True:
+        if login(username, password):
             print("Вы в системе!")
             break
         else:
@@ -65,4 +62,3 @@ if __name__ == '__main__':
                 break
 
             time.sleep(300)
-
