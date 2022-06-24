@@ -1,4 +1,6 @@
 import argparse
+import datetime
+import time
 
 logs = {"Max": "indahouse"}
 
@@ -51,3 +53,15 @@ if __name__ == '__main__':
     else:
         print("Попыток больше нет.. Прощайте")
 
+        deadline = datetime.datetime(2016, 2, 11, 15, 46, 20)
+        print('Время последней попытки: {}.'.format(deadline.strftime('%d/%m/%Y %H:%M:%S')))
+
+        while True:
+            now = datetime.datetime.now()
+            print('Current time: {}.    '.format(now.strftime('%d/%m/%Y %H:%M:%S')), end='\r')
+
+            if now >= deadline:
+                print('Вы Заблокированы на 5 мин')
+                break
+
+            time.sleep(300)
