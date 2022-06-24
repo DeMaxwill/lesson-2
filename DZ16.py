@@ -14,8 +14,8 @@ def decorator(func):
 
 
 @decorator
-def login(name: str, pwd: str,) -> bool:
-    return logs.get(pwd) == name
+def login(name: str, pwd: str) -> bool:
+    return True
 
 
 def check_password(name: str, pwd: str) -> bool:
@@ -31,28 +31,23 @@ def parse():
 
 if __name__ == '__main__':
 
-    for i in range(3):
-        name = parse().user or input("Логин: ")
-        password = parse().password or input('Пароль: ')
-        num_name = 0
-        num_pwd = 0
-        login(name, password)
-        check_password(name, password)
+    counter = 3
+    while counter >= 1:
 
-        if name == 'Max':
-            num_name = 1
-        else:
-            num = name = 0
-        if password == 'indahouse':
-            num_pwd = 1
-        else:
-            num_pwd = 0
-        sum = num_name + num_pwd
-        if sum == 2:
-            print('Вошли успешно! ')
-            break
-        elif i == 2 and sum != 2:
-            print('3 раза неверно имя пользователя или пароль! Выход из системы!')
+        print(f"У вас осталось {counter} попыток!")
+
+        username = parse().user or input("Логин: ")
+        password = parse().password or input("Пароль: ")
+
+        log = login(username, password)
+        pas = check_password(username, password)
+
+        if log and pas is True:
+            print("Вы в системе!")
             break
         else:
-            continue
+            print("Неправильный Логин или Пароль!")
+            counter -= 1
+    else:
+        print("Попыток больше нет.. Прощайте")
+
