@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
         while True:
             now = datetime.datetime.now()
-            print('Current time: {}.    '.format(now.strftime('%d/%m/%Y %H:%M:%S')), end='\r')
+            print('Время сейчас: {}.    '.format(now.strftime('%d/%m/%Y %H:%M:%S')), end='\r')
 
             if now >= deadline:
                 print('Вы Заблокированы на 5 мин')
