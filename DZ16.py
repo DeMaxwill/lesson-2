@@ -1,6 +1,5 @@
 import argparse
 import datetime
-import time
 
 logs = {"Max": "indahouse"}
 
@@ -60,5 +59,3 @@ if __name__ == '__main__':
             if now >= deadline:
                 print('Вы Заблокированы на 5 мин')
                 break
-
-            time.sleep(300)
