@@ -6,9 +6,14 @@ logs = {"Max": "indahouse"}
 
 def decorator(func):
     def wrapper(name: str, pwd: str) -> bool:
-        if check_password(name, pwd):
-            return func(name, pwd)
-        else:
+        try:
+            if not check_password(name, pwd):
+                print("Неверный Пароль!")
+                return False
+            else:
+                return func(name, pwd)
+        except UserDoesNotExist as a:
+            print(a)
             return False
 
     return wrapper
@@ -24,8 +29,8 @@ def login(name: str, pwd: str) -> bool:
 
 
 def check_password(name: str, pwd: str) -> bool:
-    if name in logs:
-        raise UserDoesNotExist
+    if name not in logs:
+        raise UserDoesNotExist("Неверный Логин!")
     else:
         return logs.get(name) == pwd
 
@@ -51,7 +56,6 @@ if __name__ == '__main__':
             print("Вы в системе!")
             break
         else:
-            print("Неправильный Логин или Пароль!")
             counter -= 1
     else:
         print("Попыток больше нет..")
