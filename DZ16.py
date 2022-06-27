@@ -4,10 +4,6 @@ import datetime
 logs = {"Max": "indahouse"}
 
 
-class UserDoesNotExist(Exception):
-    pass
-
-
 def decorator(func):
     def wrapper(name: str, pwd: str) -> bool:
         if check_password(name, pwd):
@@ -18,13 +14,20 @@ def decorator(func):
     return wrapper
 
 
+class UserDoesNotExist(Exception):
+    pass
+
+
 @decorator
 def login(name: str, pwd: str) -> bool:
     return True
 
 
 def check_password(name: str, pwd: str) -> bool:
-    return logs.get(name) == pwd
+    if name in logs:
+        raise UserDoesNotExist
+    else:
+        return logs.get(name) == pwd
 
 
 def parse():
@@ -52,6 +55,10 @@ if __name__ == '__main__':
             counter -= 1
     else:
         print("Попыток больше нет.. Прощайте")
+        try:
+            print(check_password("Max", "indahouse"))
+        except UserDoesNotExist:
+            print("Неверный Логин")
 
         deadline = datetime.datetime(2016, 2, 11, 15, 46, 20)
         print('Время последней попытки: {}.'.format(deadline.strftime('%d/%m/%Y %H:%M:%S')))
