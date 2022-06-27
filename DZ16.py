@@ -54,7 +54,7 @@ if __name__ == '__main__':
             print("Неправильный Логин или Пароль!")
             counter -= 1
     else:
-        print("Попыток больше нет.. Прощайте")
+        print("Попыток больше нет..")
 
         deadline = datetime.datetime(2016, 2, 11, 15, 46, 20)
         print('Время последней попытки: {}.'.format(deadline.strftime('%d/%m/%Y %H:%M:%S')))
