@@ -1,7 +1,6 @@
+import json
 import argparse
 import datetime
-
-logs = {"Max": "indahouse"}
 
 
 def decorator(func):
@@ -29,10 +28,12 @@ def login(name: str, pwd: str) -> bool:
 
 
 def check_password(name: str, pwd: str) -> bool:
-    if name not in logs:
-        raise UserDoesNotExist("Неверный Логин!")
-    else:
-        return logs.get(name) == pwd
+    with open('reg.json', 'r') as f:
+        logs = json.loads(f.read())
+        if name not in logs:
+            raise UserDoesNotExist("Неверный Логин!")
+        else:
+            return logs.get(name) == pwd
 
 
 def parse():
