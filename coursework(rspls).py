@@ -25,6 +25,7 @@ def main():
         main()
     else:
         comp_select = choice("камень/ножницы/бумага/ящерица/спок".split("/"))
+
         print("Игрок: " + player_select)
         print("Компьютер: " + comp_select)
 
